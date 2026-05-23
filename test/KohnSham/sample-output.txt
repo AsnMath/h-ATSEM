@@ -1,0 +1,491 @@
+Options:
+    Initial Mesh: ../mesh/cube-10.mesh.
+    Degree of Basis Polynomial: 4
+    Order of Quadrature: 24
+    Tolerence of PCG: 1e-08
+    Tolerence of LOBPCG: 1e-06
+    Tolerence of SCF Iteration: 0.0001
+    Max Iteration of Adaptive: 10
+    h-Adaptive Mode: rate_max
+    h-Adaptive Rate: 0.5
+    Number of Thread: -1
+    Using Interpolation: 1
+
+
+Iteration 1 n_dof = 409, n_poly = 28
+    SCF Iteration 1
+        Solving Hartree ...PCG reaches relative error with 61 iterations.
+        Current energy is 1.75377
+        Solving Kohn-Sham ... LOBPCG reaches max iteration
+    SCF Iteration 2
+        Solving Hartree ...PCG reaches relative error with 51 iterations.
+        Current energy is -2.29214
+        Solving Kohn-Sham ... LOBPCG reaches relative error with 159 iterations.
+    SCF Iteration 3
+        Solving Hartree ...PCG reaches relative error with 51 iterations.
+        Current energy is -2.26034
+        Solving Kohn-Sham ... LOBPCG reaches relative error with 99 iterations.
+    SCF Iteration 4
+        Solving Hartree ...PCG reaches relative error with 37 iterations.
+        Current energy is -2.20091
+        Solving Kohn-Sham ... LOBPCG reaches relative error with 4 iterations.
+    SCF Iteration 5
+        Solving Hartree ...PCG reaches relative error with 36 iterations.
+    Total energy = -2.200972 / -2.834836 with 5 SCF Iterations
+    Applying h-adaptive ... 
+Current mesh: [ 33 V / 164 E / 252 F / 120 P ] 
+Checking Mesh Topology ...
+    Num of mesh component =             1 / 1.
+    Num of boundary component =         1 / 1.
+    Num of cavity =                     0 / 0.
+    Num of hole =                       0 / 0.
+    Euler characteristic =              1 / 1.
+
+Iteration 2 n_dof = 1401, n_poly = 120
+    SCF Iteration 1
+        Solving Hartree ...PCG reaches relative error with 140 iterations.
+        Current energy is 0.825178
+        Solving Kohn-Sham ... LOBPCG reaches max iteration
+    SCF Iteration 2
+        Solving Hartree ...PCG reaches relative error with 110 iterations.
+        Current energy is -2.66856
+        Solving Kohn-Sham ... LOBPCG reaches max iteration
+    SCF Iteration 3
+        Solving Hartree ...PCG reaches relative error with 109 iterations.
+        Current energy is -2.59256
+        Solving Kohn-Sham ... LOBPCG reaches max iteration
+    SCF Iteration 4
+        Solving Hartree ...PCG reaches relative error with 88 iterations.
+        Current energy is -2.47641
+        Solving Kohn-Sham ... LOBPCG reaches relative error with 482 iterations.
+    SCF Iteration 5
+        Solving Hartree ...PCG reaches relative error with 80 iterations.
+        Current energy is -2.48426
+        Solving Kohn-Sham ... LOBPCG reaches relative error with 23 iterations.
+    SCF Iteration 6
+        Solving Hartree ...PCG reaches relative error with 61 iterations.
+        Current energy is -2.48536
+        Solving Kohn-Sham ... LOBPCG reaches relative error with 0 iterations.
+    SCF Iteration 7
+        Solving Hartree ...PCG reaches relative error with 46 iterations.
+    Total energy = -2.485280 / -2.834836 with 7 SCF Iterations
+    Applying h-adaptive ... 
+Current mesh: [ 51 V / 278 E / 444 F / 216 P ] 
+Checking Mesh Topology ...
+    Num of mesh component =             1 / 1.
+    Num of boundary component =         1 / 1.
+    Num of cavity =                     0 / 0.
+    Num of hole =                       0 / 0.
+    Euler characteristic =              1 / 1.
+
+Iteration 3 n_dof = 2433, n_poly = 216
+    SCF Iteration 1
+        Solving Hartree ...PCG reaches relative error with 160 iterations.
+        Current energy is 0.574043
+        Solving Kohn-Sham ... LOBPCG reaches max iteration
+    SCF Iteration 2
+        Solving Hartree ...PCG reaches relative error with 127 iterations.
+        Current energy is -2.83615
+        Solving Kohn-Sham ... LOBPCG reaches max iteration
+    SCF Iteration 3
+        Solving Hartree ...PCG reaches relative error with 123 iterations.
+        Current energy is -2.75913
+        Solving Kohn-Sham ... LOBPCG reaches max iteration
+    SCF Iteration 4
+        Solving Hartree ...PCG reaches relative error with 93 iterations.
+        Current energy is -2.6836
+        Solving Kohn-Sham ... LOBPCG reaches max iteration
+    SCF Iteration 5
+        Solving Hartree ...PCG reaches relative error with 99 iterations.
+        Current energy is -2.6926
+        Solving Kohn-Sham ... LOBPCG reaches max iteration
+    SCF Iteration 6
+        Solving Hartree ...PCG reaches relative error with 88 iterations.
+        Current energy is -2.69317
+        Solving Kohn-Sham ... LOBPCG reaches max iteration
+    SCF Iteration 7
+        Solving Hartree ...PCG reaches relative error with 78 iterations.
+        Current energy is -2.69475
+        Solving Kohn-Sham ... LOBPCG reaches max iteration
+    SCF Iteration 8
+        Solving Hartree ...PCG reaches relative error with 86 iterations.
+        Current energy is -2.69529
+        Solving Kohn-Sham ... LOBPCG reaches max iteration
+    SCF Iteration 9
+        Solving Hartree ...PCG reaches relative error with 67 iterations.
+        Current energy is -2.69512
+        Solving Kohn-Sham ... LOBPCG reaches max iteration
+    SCF Iteration 10
+        Solving Hartree ...PCG reaches relative error with 53 iterations.
+        Current energy is -2.69496
+        Solving Kohn-Sham ... LOBPCG reaches relative error with 1000 iterations.
+    SCF Iteration 11
+        Solving Hartree ...PCG reaches relative error with 67 iterations.
+    Total energy = -2.694992 / -2.834836 with 11 SCF Iterations
+    Applying h-adaptive ... 
+Current mesh: [ 69 V / 392 E / 636 F / 312 P ] 
+Checking Mesh Topology ...
+    Num of mesh component =             1 / 1.
+    Num of boundary component =         1 / 1.
+    Num of cavity =                     0 / 0.
+    Num of hole =                       0 / 0.
+    Euler characteristic =              1 / 1.
+
+Iteration 4 n_dof = 3465, n_poly = 312
+    SCF Iteration 1
+        Solving Hartree ...PCG reaches relative error with 171 iterations.
+        Current energy is 0.404356
+        Solving Kohn-Sham ... LOBPCG reaches max iteration
+    SCF Iteration 2
+        Solving Hartree ...PCG reaches relative error with 119 iterations.
+        Current energy is -2.82428
+        Solving Kohn-Sham ... LOBPCG reaches max iteration
+    SCF Iteration 3
+        Solving Hartree ...PCG reaches relative error with 124 iterations.
+        Current energy is -2.81861
+        Solving Kohn-Sham ... LOBPCG reaches max iteration
+    SCF Iteration 4
+        Solving Hartree ...PCG reaches relative error with 107 iterations.
+        Current energy is -2.78848
+        Solving Kohn-Sham ... LOBPCG reaches max iteration
+    SCF Iteration 5
+        Solving Hartree ...PCG reaches relative error with 105 iterations.
+        Current energy is -2.79365
+        Solving Kohn-Sham ... LOBPCG reaches max iteration
+    SCF Iteration 6
+        Solving Hartree ...PCG reaches relative error with 100 iterations.
+        Current energy is -2.79474
+        Solving Kohn-Sham ... LOBPCG reaches max iteration
+    SCF Iteration 7
+        Solving Hartree ...PCG reaches relative error with 90 iterations.
+        Current energy is -2.7952
+        Solving Kohn-Sham ... LOBPCG reaches max iteration
+    SCF Iteration 8
+        Solving Hartree ...PCG reaches relative error with 87 iterations.
+        Current energy is -2.79735
+        Solving Kohn-Sham ... LOBPCG reaches max iteration
+    SCF Iteration 9
+        Solving Hartree ...PCG reaches relative error with 85 iterations.
+    Total energy = -2.797283 / -2.834836 with 9 SCF Iterations
+    Applying h-adaptive ... 
+Current mesh: [ 87 V / 506 E / 828 F / 408 P ] 
+Checking Mesh Topology ...
+    Num of mesh component =             1 / 1.
+    Num of boundary component =         1 / 1.
+    Num of cavity =                     0 / 0.
+    Num of hole =                       0 / 0.
+    Euler characteristic =              1 / 1.
+
+Iteration 5 n_dof = 4497, n_poly = 408
+    SCF Iteration 1
+        Solving Hartree ...PCG reaches relative error with 174 iterations.
+        Current energy is 0.33164
+        Solving Kohn-Sham ... LOBPCG reaches max iteration
+    SCF Iteration 2
+        Solving Hartree ...PCG reaches relative error with 104 iterations.
+        Current energy is -2.81662
+        Solving Kohn-Sham ... LOBPCG reaches max iteration
+    SCF Iteration 3
+        Solving Hartree ...PCG reaches relative error with 104 iterations.
+        Current energy is -2.81937
+        Solving Kohn-Sham ... LOBPCG reaches max iteration
+    SCF Iteration 4
+        Solving Hartree ...PCG reaches relative error with 100 iterations.
+        Current energy is -2.81741
+        Solving Kohn-Sham ... LOBPCG reaches max iteration
+    SCF Iteration 5
+        Solving Hartree ...PCG reaches relative error with 84 iterations.
+        Current energy is -2.81536
+        Solving Kohn-Sham ... LOBPCG reaches max iteration
+    SCF Iteration 6
+        Solving Hartree ...PCG reaches relative error with 78 iterations.
+        Current energy is -2.81877
+        Solving Kohn-Sham ... LOBPCG reaches max iteration
+    SCF Iteration 7
+        Solving Hartree ...PCG reaches relative error with 95 iterations.
+        Current energy is -2.81894
+        Solving Kohn-Sham ... LOBPCG reaches max iteration
+    SCF Iteration 8
+        Solving Hartree ...PCG reaches relative error with 96 iterations.
+        Current energy is -2.82245
+        Solving Kohn-Sham ... LOBPCG reaches max iteration
+    SCF Iteration 9
+        Solving Hartree ...PCG reaches relative error with 74 iterations.
+        Current energy is -2.82156
+        Solving Kohn-Sham ... LOBPCG reaches max iteration
+    SCF Iteration 10
+        Solving Hartree ...PCG reaches relative error with 55 iterations.
+        Current energy is -2.82304
+        Solving Kohn-Sham ... LOBPCG reaches max iteration
+    SCF Iteration 11
+        Solving Hartree ...PCG reaches relative error with 77 iterations.
+        Current energy is -2.82324
+        Solving Kohn-Sham ... LOBPCG reaches max iteration
+    SCF Iteration 12
+        Solving Hartree ...PCG reaches relative error with 80 iterations.
+        Current energy is -2.8239
+        Solving Kohn-Sham ... LOBPCG reaches max iteration
+    SCF Iteration 13
+        Solving Hartree ...PCG reaches relative error with 79 iterations.
+        Current energy is -2.82435
+        Solving Kohn-Sham ... LOBPCG reaches max iteration
+    SCF Iteration 14
+        Solving Hartree ...PCG reaches relative error with 99 iterations.
+        Current energy is -2.82601
+        Solving Kohn-Sham ... LOBPCG reaches max iteration
+    SCF Iteration 15
+        Solving Hartree ...PCG reaches relative error with 97 iterations.
+        Current energy is -2.82523
+        Solving Kohn-Sham ... LOBPCG reaches max iteration
+    SCF Iteration 16
+        Solving Hartree ...PCG reaches relative error with 93 iterations.
+        Current energy is -2.82504
+        Solving Kohn-Sham ... LOBPCG reaches max iteration
+    SCF Iteration 17
+        Solving Hartree ...PCG reaches relative error with 79 iterations.
+        Current energy is -2.82391
+        Solving Kohn-Sham ... LOBPCG reaches max iteration
+    SCF Iteration 18
+        Solving Hartree ...PCG reaches relative error with 80 iterations.
+        Current energy is -2.8248
+        Solving Kohn-Sham ... LOBPCG reaches max iteration
+    SCF Iteration 19
+        Solving Hartree ...PCG reaches relative error with 75 iterations.
+    Total energy = -2.824876 / -2.834836 with 19 SCF Iterations
+    Applying h-adaptive ... 
+Current mesh: [ 273 V / 1678 E / 2764 F / 1358 P ] 
+Checking Mesh Topology ...
+    Num of mesh component =             1 / 1.
+    Num of boundary component =         1 / 1.
+    Num of cavity =                     0 / 0.
+    Num of hole =                       0 / 0.
+    Euler characteristic =              1 / 1.
+
+Iteration 6 n_dof = 14957, n_poly = 1358
+    SCF Iteration 1
+        Solving Hartree ...PCG reaches relative error with 218 iterations.
+        Current energy is 0.312197
+        Solving Kohn-Sham ... LOBPCG reaches max iteration
+    SCF Iteration 2
+        Solving Hartree ...PCG reaches relative error with 100 iterations.
+        Current energy is -2.825
+        Solving Kohn-Sham ... LOBPCG reaches max iteration
+    SCF Iteration 3
+        Solving Hartree ...PCG reaches relative error with 98 iterations.
+        Current energy is -2.82706
+        Solving Kohn-Sham ... LOBPCG reaches max iteration
+    SCF Iteration 4
+        Solving Hartree ...PCG reaches relative error with 88 iterations.
+    Total energy = -2.827063 / -2.834836 with 4 SCF Iterations
+    Applying h-adaptive ... 
+Current mesh: [ 347 V / 2168 E / 3596 F / 1774 P ] 
+Checking Mesh Topology ...
+    Num of mesh component =             1 / 1.
+    Num of boundary component =         1 / 1.
+    Num of cavity =                     0 / 0.
+    Num of hole =                       0 / 0.
+    Euler characteristic =              1 / 1.
+
+Iteration 7 n_dof = 19413, n_poly = 1774
+    SCF Iteration 1
+        Solving Hartree ...PCG reaches relative error with 224 iterations.
+        Current energy is 0.310853
+        Solving Kohn-Sham ... LOBPCG reaches max iteration
+    SCF Iteration 2
+        Solving Hartree ...PCG reaches relative error with 108 iterations.
+        Current energy is -2.82632
+        Solving Kohn-Sham ... LOBPCG reaches max iteration
+    SCF Iteration 3
+        Solving Hartree ...PCG reaches relative error with 100 iterations.
+        Current energy is -2.82887
+        Solving Kohn-Sham ... LOBPCG reaches max iteration
+    SCF Iteration 4
+        Solving Hartree ...PCG reaches relative error with 94 iterations.
+        Current energy is -2.8281
+        Solving Kohn-Sham ... LOBPCG reaches max iteration
+    SCF Iteration 5
+        Solving Hartree ...PCG reaches relative error with 107 iterations.
+        Current energy is -2.82937
+        Solving Kohn-Sham ... LOBPCG reaches max iteration
+    SCF Iteration 6
+        Solving Hartree ...PCG reaches relative error with 85 iterations.
+        Current energy is -2.82837
+        Solving Kohn-Sham ... LOBPCG reaches max iteration
+    SCF Iteration 7
+        Solving Hartree ...PCG reaches relative error with 91 iterations.
+        Current energy is -2.82934
+        Solving Kohn-Sham ... LOBPCG reaches max iteration
+    SCF Iteration 8
+        Solving Hartree ...PCG reaches relative error with 95 iterations.
+        Current energy is -2.8288
+        Solving Kohn-Sham ... LOBPCG reaches max iteration
+    SCF Iteration 9
+        Solving Hartree ...PCG reaches relative error with 98 iterations.
+        Current energy is -2.83
+        Solving Kohn-Sham ... LOBPCG reaches max iteration
+    SCF Iteration 10
+        Solving Hartree ...PCG reaches relative error with 79 iterations.
+        Current energy is -2.8293
+        Solving Kohn-Sham ... LOBPCG reaches max iteration
+    SCF Iteration 11
+        Solving Hartree ...PCG reaches relative error with 53 iterations.
+        Current energy is -2.82991
+        Solving Kohn-Sham ... LOBPCG reaches max iteration
+    SCF Iteration 12
+        Solving Hartree ...PCG reaches relative error with 76 iterations.
+    Total energy = -2.829834 / -2.834836 with 12 SCF Iterations
+    Applying h-adaptive ... 
+Current mesh: [ 759 V / 4916 E / 8246 F / 4088 P ] 
+Checking Mesh Topology ...
+    Num of mesh component =             1 / 1.
+    Num of boundary component =         1 / 1.
+    Num of cavity =                     0 / 0.
+    Num of hole =                       0 / 0.
+    Euler characteristic =              1 / 1.
+
+Iteration 8 n_dof = 44333, n_poly = 4088
+    SCF Iteration 1
+        Solving Hartree ...PCG reaches relative error with 224 iterations.
+        Current energy is 0.309509
+        Solving Kohn-Sham ... LOBPCG reaches max iteration
+    SCF Iteration 2
+        Solving Hartree ...PCG reaches relative error with 107 iterations.
+        Current energy is -2.83089
+        Solving Kohn-Sham ... LOBPCG reaches max iteration
+    SCF Iteration 3
+        Solving Hartree ...PCG reaches relative error with 102 iterations.
+        Current energy is -2.82948
+        Solving Kohn-Sham ... LOBPCG reaches max iteration
+    SCF Iteration 4
+        Solving Hartree ...PCG reaches relative error with 102 iterations.
+        Current energy is -2.83092
+        Solving Kohn-Sham ... LOBPCG reaches max iteration
+    SCF Iteration 5
+        Solving Hartree ...PCG reaches relative error with 92 iterations.
+        Current energy is -2.83005
+        Solving Kohn-Sham ... LOBPCG reaches max iteration
+    SCF Iteration 6
+        Solving Hartree ...PCG reaches relative error with 86 iterations.
+        Current energy is -2.83105
+        Solving Kohn-Sham ... LOBPCG reaches max iteration
+    SCF Iteration 7
+        Solving Hartree ...PCG reaches relative error with 86 iterations.
+        Current energy is -2.83054
+        Solving Kohn-Sham ... LOBPCG reaches max iteration
+    SCF Iteration 8
+        Solving Hartree ...PCG reaches relative error with 69 iterations.
+        Current energy is -2.83111
+        Solving Kohn-Sham ... LOBPCG reaches max iteration
+    SCF Iteration 9
+        Solving Hartree ...PCG reaches relative error with 65 iterations.
+        Current energy is -2.83073
+        Solving Kohn-Sham ... LOBPCG reaches max iteration
+    SCF Iteration 10
+        Solving Hartree ...PCG reaches relative error with 66 iterations.
+        Current energy is -2.83134
+        Solving Kohn-Sham ... LOBPCG reaches max iteration
+    SCF Iteration 11
+        Solving Hartree ...PCG reaches relative error with 60 iterations.
+        Current energy is -2.83111
+        Solving Kohn-Sham ... LOBPCG reaches max iteration
+    SCF Iteration 12
+        Solving Hartree ...PCG reaches relative error with 79 iterations.
+        Current energy is -2.83161
+        Solving Kohn-Sham ... LOBPCG reaches max iteration
+    SCF Iteration 13
+        Solving Hartree ...PCG reaches relative error with 78 iterations.
+        Current energy is -2.83125
+        Solving Kohn-Sham ... LOBPCG reaches max iteration
+    SCF Iteration 14
+        Solving Hartree ...PCG reaches relative error with 91 iterations.
+        Current energy is -2.83162
+        Solving Kohn-Sham ... LOBPCG reaches max iteration
+    SCF Iteration 15
+        Solving Hartree ...PCG reaches relative error with 76 iterations.
+    Total energy = -2.831649 / -2.834836 with 15 SCF Iterations
+    Applying h-adaptive ... 
+Current mesh: [ 1400 V / 9159 E / 15396 F / 7636 P ] 
+Checking Mesh Topology ...
+    Num of mesh component =             1 / 1.
+    Num of boundary component =         1 / 1.
+    Num of cavity =                     0 / 0.
+    Num of hole =                       0 / 0.
+    Euler characteristic =              1 / 1.
+
+Iteration 9 n_dof = 82701, n_poly = 7636
+    SCF Iteration 1
+        Solving Hartree ...PCG reaches relative error with 237 iterations.
+        Current energy is 0.308409
+        Solving Kohn-Sham ... LOBPCG reaches max iteration
+    SCF Iteration 2
+        Solving Hartree ...PCG reaches relative error with 113 iterations.
+        Current energy is -2.83226
+        Solving Kohn-Sham ... LOBPCG reaches max iteration
+    SCF Iteration 3
+        Solving Hartree ...PCG reaches relative error with 94 iterations.
+        Current energy is -2.83203
+        Solving Kohn-Sham ... LOBPCG reaches max iteration
+    SCF Iteration 4
+        Solving Hartree ...PCG reaches relative error with 98 iterations.
+        Current energy is -2.83239
+        Solving Kohn-Sham ... LOBPCG reaches max iteration
+    SCF Iteration 5
+        Solving Hartree ...PCG reaches relative error with 69 iterations.
+        Current energy is -2.83224
+        Solving Kohn-Sham ... LOBPCG reaches max iteration
+    SCF Iteration 6
+        Solving Hartree ...PCG reaches relative error with 100 iterations.
+        Current energy is -2.83238
+        Solving Kohn-Sham ... LOBPCG reaches max iteration
+    SCF Iteration 7
+        Solving Hartree ...PCG reaches relative error with 116 iterations.
+        Current energy is -2.8328
+        Solving Kohn-Sham ... LOBPCG reaches max iteration
+    SCF Iteration 8
+        Solving Hartree ...PCG reaches relative error with 78 iterations.
+        Current energy is -2.83237
+        Solving Kohn-Sham ... LOBPCG reaches max iteration
+    SCF Iteration 9
+        Solving Hartree ...PCG reaches relative error with 101 iterations.
+    Total energy = -2.832315 / -2.834836 with 9 SCF Iterations
+    Applying h-adaptive ... 
+Current mesh: [ 2229 V / 14832 E / 25064 F / 12460 P ] 
+Checking Mesh Topology ...
+    Num of mesh component =             1 / 1.
+    Num of boundary component =         1 / 1.
+    Num of cavity =                     0 / 0.
+    Num of hole =                       0 / 0.
+    Euler characteristic =              1 / 1.
+
+Iteration 10 n_dof = 134377, n_poly = 12460
+    SCF Iteration 1
+        Solving Hartree ...PCG reaches relative error with 268 iterations.
+        Current energy is 0.307436
+        Solving Kohn-Sham ... LOBPCG reaches max iteration
+    SCF Iteration 2
+        Solving Hartree ...PCG reaches relative error with 127 iterations.
+        Current energy is -2.83309
+        Solving Kohn-Sham ... LOBPCG reaches max iteration
+    SCF Iteration 3
+        Solving Hartree ...PCG reaches relative error with 112 iterations.
+        Current energy is -2.83224
+        Solving Kohn-Sham ... LOBPCG reaches max iteration
+    SCF Iteration 4
+        Solving Hartree ...PCG reaches relative error with 96 iterations.
+        Current energy is -2.83273
+        Solving Kohn-Sham ... LOBPCG reaches max iteration
+    SCF Iteration 5
+        Solving Hartree ...PCG reaches relative error with 104 iterations.
+        Current energy is -2.83253
+        Solving Kohn-Sham ... LOBPCG reaches max iteration
+    SCF Iteration 6
+        Solving Hartree ...PCG reaches relative error with 113 iterations.
+    Total energy = -2.832563 / -2.834836 with 6 SCF Iterations
+    Applying h-adaptive ... 
+Current mesh: [ 5208 V / 35305 E / 60044 F / 29946 P ] 
+Checking Mesh Topology ...
+    Num of mesh component =             1 / 1.
+    Num of boundary component =         1 / 1.
+    Num of cavity =                     0 / 0.
+    Num of hole =                       0 / 0.
+    Euler characteristic =              1 / 1.
