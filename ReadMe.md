@@ -6,6 +6,8 @@ Other systems and compilers may also work, but **C++ 20** support is required.
 
 The code is based on the Eigen (https://libeigen.gitlab.io/) and autodiff (https://autodiff.github.io/), which are included in ``3rdparty``.
 
+This test for Kohn-Sham equation is based on `Libxc`, which should be installed if you want to run this test. Otherwise, you can always run the test for Poisson.
+
 # Build
 
 Simply use ``make`` in the ``test/Poison`` and ``test/KohnSham``, then the executable file will be generated as ``./build/apps/main.exe``.
