@@ -73,7 +73,7 @@ Iteration 6
     Building linear system ... n_dof = 5529, n_poly = 504
     Solving equation ...  PCG reaches relative error with 332 iterations.
     Computing error ... Error = 0.000297658
-    Applying h-adaptive ... Current mesh: [ 123 V / 734 E / 1212 F / 600 P ] 
+    Applying h-adaptive ... Current mesh: [ 237 V / 1486 E / 2482 F / 1232 P ] 
 Checking Mesh Topology ...
     Num of mesh component =             1 / 1.
     Num of boundary component =         1 / 1.
@@ -82,10 +82,10 @@ Checking Mesh Topology ...
     Euler characteristic =              1 / 1.
 
 Iteration 7
-    Building linear system ... n_dof = 6561, n_poly = 600
-    Solving equation ...  PCG reaches relative error with 339 iterations.
-    Computing error ... Error = 0.000297664
-    Applying h-adaptive ... Current mesh: [ 175 V / 1072 E / 1784 F / 886 P ] 
+    Building linear system ... n_dof = 13373, n_poly = 1232
+    Solving equation ...  PCG reaches relative error with 388 iterations.
+    Computing error ... Error = 8.95762e-05
+    Applying h-adaptive ... Current mesh: [ 341 V / 2120 E / 3512 F / 1732 P ] 
 Checking Mesh Topology ...
     Num of mesh component =             1 / 1.
     Num of boundary component =         1 / 1.
@@ -94,10 +94,10 @@ Checking Mesh Topology ...
     Euler characteristic =              1 / 1.
 
 Iteration 8
-    Building linear system ... n_dof = 9629, n_poly = 886
-    Solving equation ...  PCG reaches relative error with 371 iterations.
-    Computing error ... Error = 0.000191579
-    Applying h-adaptive ... Current mesh: [ 269 V / 1654 E / 2736 F / 1350 P ] 
+    Building linear system ... n_dof = 18969, n_poly = 1732
+    Solving equation ...  PCG reaches relative error with 403 iterations.
+    Computing error ... Error = 4.06333e-05
+    Applying h-adaptive ... Current mesh: [ 585 V / 3734 E / 6242 F / 3092 P ] 
 Checking Mesh Topology ...
     Num of mesh component =             1 / 1.
     Num of boundary component =         1 / 1.
@@ -106,10 +106,10 @@ Checking Mesh Topology ...
     Euler characteristic =              1 / 1.
 
 Iteration 9
-    Building linear system ... n_dof = 14789, n_poly = 1350
-    Solving equation ...  PCG reaches relative error with 390 iterations.
-    Computing error ... Error = 6.84543e-05
-    Applying h-adaptive ... Current mesh: [ 385 V / 2404 E / 3992 F / 1972 P ] 
+    Building linear system ... n_dof = 33605, n_poly = 3092
+    Solving equation ...  PCG reaches relative error with 427 iterations.
+    Computing error ... Error = 1.62532e-05
+    Applying h-adaptive ... Current mesh: [ 1037 V / 6770 E / 11404 F / 5670 P ] 
 Checking Mesh Topology ...
     Num of mesh component =             1 / 1.
     Num of boundary component =         1 / 1.
@@ -118,10 +118,10 @@ Checking Mesh Topology ...
     Euler characteristic =              1 / 1.
 
 Iteration 10
-    Building linear system ... n_dof = 21545, n_poly = 1972
-    Solving equation ...  PCG reaches relative error with 407 iterations.
-    Computing error ... Error = 3.64238e-05
-    Applying h-adaptive ... Current mesh: [ 581 V / 3712 E / 6214 F / 3082 P ] 
+    Building linear system ... n_dof = 61229, n_poly = 5670
+    Solving equation ...  PCG reaches relative error with 460 iterations.
+    Computing error ... Error = 9.66915e-06
+    Applying h-adaptive ... Current mesh: [ 1605 V / 10644 E / 18016 F / 8976 P ] 
 Checking Mesh Topology ...
     Num of mesh component =             1 / 1.
     Num of boundary component =         1 / 1.

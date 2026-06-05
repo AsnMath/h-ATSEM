@@ -79,7 +79,7 @@ namespace Asn::Mesh
     }
 
     template <Int N>
-    Bool contain(Array<Int, N> &list, const Int &data)
+    Bool contain(const Array<Int, N> &list, const Int &data)
     {
         for (Int i = 0; i < N; i++)
         {
@@ -106,7 +106,7 @@ namespace Asn::Mesh
     {
         for (Int i = 0; i < DIM; i++)
         {
-            const Real tol = TOL * std::max(TOL, std::max(std::abs(x(i)), std::abs(y(i))));
+            const Real tol = std::max(DEFAULT_ABS_TOL, TOL * std::max(TOL, std::max(std::abs(x(i)), std::abs(y(i)))));
             if (x(i) < (y(i) - tol))
             {
                 return true;

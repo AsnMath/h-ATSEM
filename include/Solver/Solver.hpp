@@ -8,13 +8,14 @@
 
 namespace Asn::Math
 {
+    constexpr Real MAX_MODIFY_TOL = 1e16;
+
     inline Matrix<Real> safe_decomposition(const Matrix<Real> &A)
     {
         const Int N = A.rows();
         Real sigma = std::numeric_limits<Real>::epsilon() * A.norm();
-        const Matrix<Real> I = Matrix<Real>::Identity(N, N);
         Matrix<Real> O = A;
-        while (true)
+        while (sigma <= MAX_MODIFY_TOL)
         {
             if (const Eigen::LDLT<Matrix<Real>> chol(O); chol.info() == Eigen::ComputationInfo::Success)
             {
@@ -25,7 +26,7 @@ namespace Asn::Math
                 }
             }
             sigma *= 10.0;
-            O += sigma * I;
+            O.diagonal().array() += sigma;
         }
         ASN_ERROR("Function safe_decomposition fails");
     }
@@ -34,16 +35,15 @@ namespace Asn::Math
     {
         const Int N = A.rows();
         Real sigma = std::numeric_limits<Real>::epsilon() * B.norm();
-        const Matrix<Real> I = Matrix<Real>::Identity(N, N);
         Matrix<Real> O = B;
-        while (true)
+        while (sigma <= MAX_MODIFY_TOL)
         {
             if (const Eigen::GeneralizedSelfAdjointEigenSolver<Matrix<Real>> eigs(A, O); eigs.info() == Eigen::ComputationInfo::Success)
             {
                 return std::make_tuple(eigs.eigenvalues(), eigs.eigenvectors());
             }
             sigma *= 10.0;
-            O += sigma * I;
+            O.diagonal().array() += sigma;
         }
         ASN_ERROR("Function safe_eigen_solver fails");
     }
@@ -74,7 +74,7 @@ namespace Asn::Math
 
     inline void sort_epairs(Vector<Real> &evalues, Matrix<Real> &evectors)
     {
-        Map<Real, Vector<Real>> epairs;
+        MultiMap<Real, Vector<Real>> epairs;
         for (Int i = 0; i < evectors.cols(); i++)
         {
             epairs.insert(std::make_pair(evalues(i), evectors.col(i)));

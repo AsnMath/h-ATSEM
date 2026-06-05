@@ -29,7 +29,7 @@ namespace Asn::Math
 
     inline AbstractSolver &AbstractSolver::set_max_iter(const Int &max_iter)
     {
-        assert(max_iter >= 0.0);
+        assert(max_iter >= 0);
         this->max_iter = max_iter;
         return *this;
     }

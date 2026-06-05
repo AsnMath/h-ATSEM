@@ -46,17 +46,17 @@ namespace Asn::Math
                     {
                         if (vid[0] != vid_0[i] && vid[1] != vid_0[i] && vid[2] != vid_0[i])
                         {
-                            assert(face_index_0 ==-1);
+                            assert(face_index_0 == -1);
                             face_index_0 = i;
                         }
                         if (vid[0] != vid_1[i] && vid[1] != vid_1[i] && vid[2] != vid_1[i])
                         {
-                            assert(face_index_1 ==-1);
+                            assert(face_index_1 == -1);
                             face_index_1 = i;
                         }
                     }
-                    assert(face_index_0 !=-1);
-                    assert(face_index_1 !=-1);
+                    assert(face_index_0 != -1);
+                    assert(face_index_1 != -1);
                     for (Int l = 0; l < static_cast<Int>(space.QUAD.tri.size()); l++)
                     {
                         Point<3> tmp = Point<3>::Zero();

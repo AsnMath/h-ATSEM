@@ -80,6 +80,7 @@ namespace Asn::Math
     template <typename Space>
     inline void EllipticUtils<Space>::apply_boundary(SparseMatrix<Real> &A, Vector<Real> &u) const
     {
+        static_assert(std::is_same<decltype(A), SparseMatrix<Real, Eigen::RowMajor> &>::value);
         #pragma omp parallel for default(none) shared(A, u)
         for (Int row = 0; row < this->space.num_dof; row++)
         {

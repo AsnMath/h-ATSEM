@@ -880,18 +880,22 @@ namespace Asn::Mesh
     template <Real TOL>
     inline void TetMesh<TOL>::update_attributes()
     {
+        #pragma omp parallel for default(none) shared(vert)
         for (Int i = 0; i < static_cast<Int>(vert.size()); i++)
         {
             vert[i].label = Unknown;
         }
+        #pragma omp parallel for default(none) shared(edge)
         for (Int i = 0; i < static_cast<Int>(edge.size()); i++)
         {
             edge[i].label = Unknown;
         }
+        #pragma omp parallel for default(none) shared(face)
         for (Int i = 0; i < static_cast<Int>(face.size()); i++)
         {
             face[i].label = Unknown;
         }
+        #pragma omp parallel for default(none) shared(poly)
         for (Int i = 0; i < static_cast<Int>(poly.size()); i++)
         {
             poly[i].label = Unknown;

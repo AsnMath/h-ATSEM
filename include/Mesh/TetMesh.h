@@ -150,10 +150,6 @@ namespace Asn::Mesh
         Int get_vert_opposite_face(const Int &pid, const Int &fid);
 
         void update_attributes();
-        void update_vert_attributes();
-        void update_vert_attributes(const Int &vid);
-        void update_edge_attributes();
-        void update_edge_attributes(const Int &eid);
         void update_face_attributes();
         void update_face_attributes(const Int &fid);
         void update_poly_attributes();

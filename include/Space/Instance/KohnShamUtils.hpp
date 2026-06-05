@@ -76,6 +76,7 @@ namespace Asn::Math
     {
         const Int N = pos.size();
         Tensor<Real, 2> ext(this->space.num_poly(), this->space.QUAD.tet.size());
+        #pragma omp parallel for default(none) shared(ext, pos, F, N)
         for (Int pid = 0; pid < this->space.num_poly(); pid++)
         {
             const Vector<Real> &p_0 = this->space.get_vert(this->space.get_poly(pid).vert[0]).coord;
@@ -132,32 +133,30 @@ namespace Asn::Math
     template <typename Space>
     inline Tensor<Real, 2> KohnShamUtils<Space>::get_lda_vxc(const Tensor<Real, 2> &rho) const
     {
-        const Int N = this->space.num_poly() * this->space.QUAD.tet.size();
-        List<Real> r(N);
-        List<Real> vx(N);
-        List<Real> vc(N);
-        for (Int pid = 0, i = 0; pid < this->space.num_poly(); pid++)
-        {
-            for (Int l = 0; l < static_cast<Int>(this->space.QUAD.tet.size()); l++, i++)
-            {
-                r[i] = rho(pid, l);
-            }
-        }
-        xc_func_type fx, fc;
-        int tmp = xc_func_init(&fx, LIBXC_LDA_X_ID, XC_UNPOLARIZED);
-        assert(tmp == 0);
-        xc_lda_vxc(&fx, N, r.data(), vx.data());
-        xc_func_end(&fx);
-        tmp = xc_func_init(&fc, LIBXC_LDA_C_ID, XC_UNPOLARIZED);
-        assert(tmp == 0);
-        xc_lda_vxc(&fc, N, r.data(), vc.data());
-        xc_func_end(&fc);
+        const Int N = this->space.QUAD.tet.size();
         Tensor<Real, 2> vxc(this->space.num_poly(), this->space.QUAD.tet.size());
-        for (Int pid = 0, i = 0; pid < this->space.num_poly(); pid++)
+        #pragma omp parallel for default(none) shared(rho, vxc, N)
+        for (Int pid = 0; pid < this->space.num_poly(); pid++)
         {
-            for (Int l = 0; l < static_cast<Int>(this->space.QUAD.tet.size()); l++, i++)
+            List<Real> r(N);
+            List<Real> vx(N);
+            List<Real> vc(N);
+            for (Int l = 0; l < N; l++)
             {
-                vxc(pid, l) = vx[i] + vc[i];
+                r[l] = rho(pid, l);
+            }
+            xc_func_type fx, fc;
+            int tmp = xc_func_init(&fx, LIBXC_LDA_X_ID, XC_UNPOLARIZED);
+            assert(tmp == 0);
+            tmp = xc_func_init(&fc, LIBXC_LDA_C_ID, XC_UNPOLARIZED);
+            assert(tmp == 0);
+            xc_lda_vxc(&fx, N, r.data(), vx.data());
+            xc_lda_vxc(&fc, N, r.data(), vc.data());
+            xc_func_end(&fx);
+            xc_func_end(&fc);
+            for (Int l = 0; l < N; l++)
+            {
+                vxc(pid, l) = vx[l] + vc[l];
             }
         }
         return vxc;
@@ -166,32 +165,30 @@ namespace Asn::Math
     template <typename Space>
     inline Tensor<Real, 2> KohnShamUtils<Space>::get_lda_exc(const Tensor<Real, 2> &rho) const
     {
-        const Int N = this->space.num_poly() * this->space.QUAD.tet.size();
-        List<Real> r(N);
-        List<Real> ex(N);
-        List<Real> ec(N);
-        for (Int pid = 0, i = 0; pid < this->space.num_poly(); pid++)
-        {
-            for (Int l = 0; l < static_cast<Int>(this->space.QUAD.tet.size()); l++, i++)
-            {
-                r[i] = rho(pid, l);
-            }
-        }
-        xc_func_type fx, fc;
-        int tmp = xc_func_init(&fx, LIBXC_LDA_X_ID, XC_UNPOLARIZED);
-        assert(tmp == 0);
-        xc_lda_exc(&fx, N, r.data(), ex.data());
-        xc_func_end(&fx);
-        tmp = xc_func_init(&fc, LIBXC_LDA_C_ID, XC_UNPOLARIZED);
-        assert(tmp == 0);
-        xc_lda_exc(&fc, N, r.data(), ec.data());
-        xc_func_end(&fc);
+        const Int N = this->space.QUAD.tet.size();
         Tensor<Real, 2> exc(this->space.num_poly(), this->space.QUAD.tet.size());
-        for (Int pid = 0, i = 0; pid < this->space.num_poly(); pid++)
+        #pragma omp parallel for default(none) shared(rho, exc, N)
+        for (Int pid = 0; pid < this->space.num_poly(); pid++)
         {
-            for (Int l = 0; l < static_cast<Int>(this->space.QUAD.tet.size()); l++, i++)
+            List<Real> r(N);
+            List<Real> ex(N);
+            List<Real> ec(N);
+            for (Int l = 0; l < N; l++)
             {
-                exc(pid, l) = ex[i] + ec[i];
+                r[l] = rho(pid, l);
+            }
+            xc_func_type fx, fc;
+            int tmp = xc_func_init(&fx, LIBXC_LDA_X_ID, XC_UNPOLARIZED);
+            assert(tmp == 0);
+            tmp = xc_func_init(&fc, LIBXC_LDA_C_ID, XC_UNPOLARIZED);
+            assert(tmp == 0);
+            xc_lda_exc(&fx, N, r.data(), ex.data());
+            xc_lda_exc(&fc, N, r.data(), ec.data());
+            xc_func_end(&fx);
+            xc_func_end(&fc);
+            for (Int l = 0; l < N; l++)
+            {
+                exc(pid, l) = ex[l] + ec[l];
             }
         }
         return exc;
@@ -239,35 +236,33 @@ namespace Asn::Math
     template <typename Space>
     inline Pair<Tensor<Real, 2>, Tensor<Real, 2>> KohnShamUtils<Space>::get_lsd_vxc(const Tensor<Real, 2> &rho_1, const Tensor<Real, 2> &rho_2) const
     {
-        const Int N = this->space.num_poly() * this->space.QUAD.tet.size();
-        List<Real> r(2 * N);
-        List<Real> vx(2 * N);
-        List<Real> vc(2 * N);
-        for (Int pid = 0, i = 0; pid < this->space.num_poly(); pid++)
-        {
-            for (Int l = 0; l < static_cast<Int>(this->space.QUAD.tet.size()); l++, i += 2)
-            {
-                r[i] = rho_1(pid, l);
-                r[i + 1] = rho_2(pid, l);
-            }
-        }
-        xc_func_type fx, fc;
-        int tmp = xc_func_init(&fx, LIBXC_LDA_X_ID, XC_POLARIZED);
-        assert(tmp == 0);
-        xc_lda_vxc(&fx, N, r.data(), vx.data());
-        xc_func_end(&fx);
-        tmp = xc_func_init(&fc, LIBXC_LDA_C_ID, XC_POLARIZED);
-        assert(tmp == 0);
-        xc_lda_vxc(&fc, N, r.data(), vc.data());
-        xc_func_end(&fc);
+        const Int N = this->space.QUAD.tet.size();
         Tensor<Real, 2> vxc_1(this->space.num_poly(), this->space.QUAD.tet.size());
         Tensor<Real, 2> vxc_2(this->space.num_poly(), this->space.QUAD.tet.size());
-        for (Int pid = 0, i = 0; pid < this->space.num_poly(); pid++)
+        #pragma omp parallel for default(none) shared(rho_1, rho_2, vxc_1, vxc_2, N)
+        for (Int pid = 0; pid < this->space.num_poly(); pid++)
         {
-            for (Int l = 0; l < static_cast<Int>(this->space.QUAD.tet.size()); l++, i += 2)
+            List<Real> r(2 * N);
+            List<Real> vx(2 * N);
+            List<Real> vc(2 * N);
+            for (Int l = 0; l < static_cast<Int>(this->space.QUAD.tet.size()); l++)
             {
-                vxc_1(pid, l) = vx[i] + vc[i];
-                vxc_2(pid, l) = vx[i + 1] + vc[i + 1];
+                r[2 * l] = rho_1(pid, l);
+                r[2 * l + 1] = rho_2(pid, l);
+            }
+            xc_func_type fx, fc;
+            int tmp = xc_func_init(&fx, LIBXC_LDA_X_ID, XC_POLARIZED);
+            assert(tmp == 0);
+            tmp = xc_func_init(&fc, LIBXC_LDA_C_ID, XC_POLARIZED);
+            assert(tmp == 0);
+            xc_lda_vxc(&fx, N, r.data(), vx.data());
+            xc_lda_vxc(&fc, N, r.data(), vc.data());
+            xc_func_end(&fx);
+            xc_func_end(&fc);
+            for (Int l = 0; l < static_cast<Int>(this->space.QUAD.tet.size()); l++)
+            {
+                vxc_1(pid, l) = vx[2 * l] + vc[2 * l];
+                vxc_2(pid, l) = vx[2 * l + 1] + vc[2 * l + 1];
             }
         }
         return std::make_pair(vxc_1, vxc_2);
@@ -276,33 +271,31 @@ namespace Asn::Math
     template <typename Space>
     inline Tensor<Real, 2> KohnShamUtils<Space>::get_lsd_exc(const Tensor<Real, 2> &rho_1, const Tensor<Real, 2> &rho_2) const
     {
-        const Int N = this->space.num_poly() * this->space.QUAD.tet.size();
-        List<Real> r(2 * N);
-        List<Real> ex(N);
-        List<Real> ec(N);
-        for (Int pid = 0, i = 0; pid < this->space.num_poly(); pid++)
-        {
-            for (Int l = 0; l < static_cast<Int>(this->space.QUAD.tet.size()); l++, i += 2)
-            {
-                r[i] = rho_1(pid, l);
-                r[i + 1] = rho_2(pid, l);
-            }
-        }
-        xc_func_type fx, fc;
-        int tmp = xc_func_init(&fx, LIBXC_LDA_X_ID, XC_POLARIZED);
-        assert(tmp == 0);
-        xc_lda_exc(&fx, N, r.data(), ex.data());
-        xc_func_end(&fx);
-        tmp = xc_func_init(&fc, LIBXC_LDA_C_ID, XC_POLARIZED);
-        assert(tmp == 0);
-        xc_lda_exc(&fc, N, r.data(), ec.data());
-        xc_func_end(&fc);
+        const Int N = this->space.QUAD.tet.size();
         Tensor<Real, 2> exc(this->space.num_poly(), this->space.QUAD.tet.size());
-        for (Int pid = 0, i = 0; pid < this->space.num_poly(); pid++)
+        #pragma omp parallel for default(none) shared(rho_1, rho_2, exc, N)
+        for (Int pid = 0; pid < this->space.num_poly(); pid++)
         {
-            for (Int l = 0; l < static_cast<Int>(this->space.QUAD.tet.size()); l++, i++)
+            List<Real> r(2 * N);
+            List<Real> ex(N);
+            List<Real> ec(N);
+            for (Int l = 0; l < static_cast<Int>(this->space.QUAD.tet.size()); l++)
             {
-                exc(pid, l) = ex[i] + ec[i];
+                r[2 * l] = rho_1(pid, l);
+                r[2 * l + 1] = rho_2(pid, l);
+            }
+            xc_func_type fx, fc;
+            int tmp = xc_func_init(&fx, LIBXC_LDA_X_ID, XC_POLARIZED);
+            assert(tmp == 0);
+            tmp = xc_func_init(&fc, LIBXC_LDA_C_ID, XC_POLARIZED);
+            assert(tmp == 0);
+            xc_lda_exc(&fx, N, r.data(), ex.data());
+            xc_lda_exc(&fc, N, r.data(), ec.data());
+            xc_func_end(&fx);
+            xc_func_end(&fc);
+            for (Int l = 0; l < static_cast<Int>(this->space.QUAD.tet.size()); l++)
+            {
+                exc(pid, l) = ex[l] + ec[l];
             }
         }
         return exc;
@@ -342,20 +335,19 @@ namespace Asn::Math
                 }
             }
         }
-        List<Eigen::Triplet<Real>> list_all;
-        Int size = 0;
-        for (Int pid = 0; pid < this->space.num_poly(); pid++)
+        List<Int> offsets(list.size() + 1, 0);
+        for (Int i = 0; i < static_cast<Int>(list.size()); i++)
         {
-            size += list[pid].size();
+            offsets[i + 1] = offsets[i] + list[i].size();
         }
-        list_all.reserve(size);
-        for (Int pid = 0; pid < this->space.num_poly(); pid++)
+        List<Eigen::Triplet<Real>> list_all(offsets.back());
+        #pragma omp parallel for default(none) shared(list, list_all, offsets, std::ranges::copy)
+        for (Int i = 0; i < static_cast<Int>(list.size()); i++)
         {
-            list_all.insert(list_all.end(), list[pid].begin(), list[pid].end());
+            std::ranges::copy(list[i], list_all.begin() + offsets[i]);
         }
         SparseMatrix<Real> A(this->index_dof.size(), this->index_dof.size());
         A.setFromTriplets(list_all.begin(), list_all.end());
-        A.prune(static_cast<Real>(0.0));
         const SparseMatrix<Real> effect_matrix = A.selfadjointView<Eigen::Lower>();
         return effect_matrix;
     }
@@ -537,7 +529,7 @@ namespace Asn::Math
         }
         Vector<Real> rhs = Vector<Real>::Zero(N + 1);
         rhs(N) = 1.0;
-        Vector<Real> alpha = A.completeOrthogonalDecomposition().solve(rhs);
+        Vector<Real> alpha = A.fullPivLu().solve(rhs);
         Tensor<Real, 2> rho_new(rho[0].dimensions());
         rho_new.setZero();
         for (Int i = 0; i < N; i++)

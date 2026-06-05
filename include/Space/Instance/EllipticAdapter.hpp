@@ -42,7 +42,7 @@ namespace Asn::Math
             {
                 tmp += solution(this->space.get_num_dof_poly(pid, index)) * (inv_jacobi_matrix_transpose * this->space.hess_psi_value(index)[l] * inv_jacobi_matrix).trace();
             }
-            interior_residual += (this->space.get_poly(pid).volume * tmp * tmp);
+            interior_residual += (this->space.QUAD.tet[l].second * this->space.get_poly(pid).volume * tmp * tmp);
         }
 
         const Real h_p = this->space.get_poly_diameter(pid) / static_cast<Real>(this->space.MAX_ORDER);

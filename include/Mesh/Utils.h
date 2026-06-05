@@ -22,7 +22,7 @@ namespace Asn::Mesh
     void switch_data_array(Array<Int, N> &data, const Int &data1, const Int &data2);
 
     template <Int N>
-    Bool contain(Array<Int, N> &list, const Int &data);
+    Bool contain(const Array<Int, N> &list, const Int &data);
 
     Bool seek_keyword(std::ifstream &fp, const String &keyword);
 

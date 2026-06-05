@@ -1,8 +1,6 @@
 #ifndef ASN_MATH_SPACE_KOHN_SHAM_ADAPTER_HPP
 #define ASN_MATH_SPACE_KOHN_SHAM_ADAPTER_HPP
 
-#include <pstl/parallel_backend_utils.h>
-
 #include "KohnShamAdapter.h"
 
 #include "../Adapter.hpp"
@@ -85,8 +83,6 @@ namespace Asn::Math
 
         Real kohn_sham_interior_residual = 0.0;
         Real kohn_sham_boundary_residual = 0.0;
-        Real poisson_interior_residual = 0.0;
-        Real poisson_boundary_residual = 0.0;
 
         for (Int i = 0; i < static_cast<Int>(num_elec.size()); i++)
         {
@@ -105,20 +101,8 @@ namespace Asn::Math
             }
         }
 
-        for (Int l = 0; l < static_cast<Int>(this->space.QUAD.tet.size()); l++)
-        {
-            Real tmp = 0.0;
-            tmp += poisson_rhs(pid, l);
-            for (Int it = 0; it < static_cast<Int>(this->space.INDEX_POLY_ALL.size()); it++)
-            {
-                tmp += poisson_solution(this->space.num_dof_poly_all[pid][it]) * trace(l, it);
-            }
-            poisson_interior_residual += (this->space.get_poly(pid).volume * tmp * tmp);
-        }
-
         const Real h_p = this->space.get_poly_diameter(pid) / static_cast<Real>(this->space.MAX_ORDER);
         kohn_sham_interior_residual *= (h_p * h_p);
-        poisson_interior_residual *= (h_p * h_p);
 
         for (Int i = 0; i < static_cast<Int>(num_elec.size()); i++)
         {
@@ -126,10 +110,6 @@ namespace Asn::Math
             {
                 kohn_sham_boundary_residual += num_elec[i] * kohn_sham_jump_term(i, fid);
             }
-        }
-        for (const Int fid : this->space.get_poly(pid).face)
-        {
-            poisson_boundary_residual += poisson_jump_term(0, fid);
         }
 
         return std::sqrt(kohn_sham_interior_residual + kohn_sham_boundary_residual / 2.0);

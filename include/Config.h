@@ -18,7 +18,7 @@
 #include "../3rdparty/Autodiff/reverse/var.hpp"
 #include "../3rdparty/Autodiff/reverse/eigen.hpp"
 
-static_assert(__cplusplus >= 202000, "C++ 20 or higher is requiered.");
+static_assert(__cplusplus >= 202000, "C++ 20 or higher is required.");
 
 #define ASN_ALERT printf("\n\033[38;2;0;255;0mAsn: Alert at %s: %d.\033[0m\n", __FILE__, __LINE__);
 #define ASN_ERROR(text) printf("\n\033[38;2;255;0;0mAsn: Error at %s: %d. %s.\033[0m\n", __FILE__, __LINE__, text); exit(0);
@@ -48,6 +48,8 @@ namespace Asn
     using HashSet = std::unordered_set<Type, Hash, Equal>;
     template <typename Key, typename Value, typename Cmp = std::less<Key>>
     using Map = std::map<Key, Value, Cmp>;
+    template <typename Key, typename Value, typename Cmp = std::less<Key>>
+    using MultiMap = std::multimap<Key, Value, Cmp>;
     template <typename Key, typename Value, typename Hash = std::hash<Key>, typename Equal = std::equal_to<Key>>
     using HashMap = std::unordered_map<Key, Value, Hash, Equal>;
 
@@ -75,8 +77,8 @@ namespace Asn
     static_assert(DEFAULT_REL_TOL >= 0.0);
     static_assert(DEFAULT_ABS_TOL >= 0.0);
     static_assert(DEFAULT_MAX_TOL >= 0.0);
-    static_assert(DEFAULT_MAX_ITER >= 0.0);
-    static_assert(MAXIMUM_MAX_ITER >= 0.0);
+    static_assert(DEFAULT_MAX_ITER >= 0);
+    static_assert(MAXIMUM_MAX_ITER >= 0);
 
     template <typename InputType, typename OutputType>
     inline OutputType convert(const InputType &input)
@@ -94,8 +96,8 @@ namespace Asn
 
     inline Real timer(const String &tag = "")
     {
-        static HashMap<String, std::chrono::_V2::steady_clock::time_point> time_table;
-        const std::chrono::_V2::steady_clock::time_point now = std::chrono::steady_clock::now();
+        static HashMap<String, std::chrono::steady_clock::time_point> time_table;
+        const std::chrono::steady_clock::time_point now = std::chrono::steady_clock::now();
         Real duration = -1.0;
         if (time_table.contains(tag))
         {

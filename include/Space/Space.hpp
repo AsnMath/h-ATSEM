@@ -144,7 +144,7 @@ namespace Asn::Math
             res = res - i(2) * koornwinder({0, 1, i(2)}, x) / (i(2) + 1);
             return res;
         }
-        
+
         if (i(0) == 1 && i(1) >= 1 && i(2) >= 1)
         {
             Type res = koornwinder({0, i(1) + 1, i(2)}, x);
@@ -668,20 +668,19 @@ namespace Asn::Math
                 }
             }
         }
-        List<Eigen::Triplet<Real>> list_all;
-        Int size = 0;
-        for (Int pid = 0; pid < static_cast<Int>(this->poly.size()); pid++)
+        List<Int> offsets(list.size() + 1, 0);
+        for (Int i = 0; i < static_cast<Int>(list.size()); i++)
         {
-            size += list[pid].size();
+            offsets[i + 1] = offsets[i] + list[i].size();
         }
-        list_all.reserve(size);
-        for (Int pid = 0; pid < static_cast<Int>(this->poly.size()); pid++)
+        List<Eigen::Triplet<Real>> list_all(offsets.back());
+        #pragma omp parallel for default(none) shared(list, list_all, offsets, std::ranges::copy)
+        for (Int i = 0; i < static_cast<Int>(list.size()); i++)
         {
-            list_all.insert(list_all.end(), list[pid].begin(), list[pid].end());
+            std::ranges::copy(list[i], list_all.begin() + offsets[i]);
         }
         SparseMatrix<Real> A(num_dof, num_dof);
         A.setFromTriplets(list_all.begin(), list_all.end());
-        A.prune(static_cast<Real>(0.0));
         _stiff_matrix = A.selfadjointView<Eigen::Lower>();
         _stiff_matrix.makeCompressed();
         return;
@@ -712,20 +711,19 @@ namespace Asn::Math
                 }
             }
         }
-        List<Eigen::Triplet<Real>> list_all;
-        Int size = 0;
-        for (Int pid = 0; pid < static_cast<Int>(this->poly.size()); pid++)
+        List<Int> offsets(list.size() + 1, 0);
+        for (Int i = 0; i < static_cast<Int>(list.size()); i++)
         {
-            size += list[pid].size();
+            offsets[i + 1] = offsets[i] + list[i].size();
         }
-        list_all.reserve(size);
-        for (Int pid = 0; pid < static_cast<Int>(this->poly.size()); pid++)
+        List<Eigen::Triplet<Real>> list_all(offsets.back());
+        #pragma omp parallel for default(none) shared(list, list_all, offsets, std::ranges::copy)
+        for (Int i = 0; i < static_cast<Int>(list.size()); i++)
         {
-            list_all.insert(list_all.end(), list[pid].begin(), list[pid].end());
+            std::ranges::copy(list[i], list_all.begin() + offsets[i]);
         }
         SparseMatrix<Real> A(num_dof, num_dof);
         A.setFromTriplets(list_all.begin(), list_all.end());
-        A.prune(static_cast<Real>(0.0));
         _mass_matrix = A.selfadjointView<Eigen::Lower>();
         _mass_matrix.makeCompressed();
         return;
