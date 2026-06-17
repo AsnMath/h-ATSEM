@@ -23,7 +23,6 @@ namespace Asn::Math
                 this->lhs(i) = 1.0;
             }
         }
-        this->lhs = this->lhs.cwiseInverse();
         this->init_lhs = true;
         return *this;
     }
@@ -39,7 +38,6 @@ namespace Asn::Math
                 this->rhs(i) = 1.0;
             }
         }
-        this->rhs = this->rhs.cwiseInverse();
         this->init_rhs = true;
         return *this;
     }
@@ -66,7 +64,7 @@ namespace Asn::Math
             }
             else
             {
-                return this->lhs.asDiagonal() * x;
+                return this->lhs.cwiseInverse().asDiagonal() * x;
             }
         }
         ASN_ERROR("The preconditioner is not initialized.");
